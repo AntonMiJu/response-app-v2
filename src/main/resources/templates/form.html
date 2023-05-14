@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="icon" href="/images/cropped-logo.png"/>
+  <link rel="stylesheet" href="/css/form.css"/>
+
+  <script src="/js/form.js"></script>
+
+  <title>Залишити відгук</title>
+</head>
+<body class="anonymous">
+  <form id="form" th:action="@{response/}" th:object="${id}" method="post">
+    <section>
+      <img src="/images/logo.png" alt="Avetra Logo" id="icon">
+    </section>
+
+    <fieldset>
+      <div id="checkbox">
+        <input type="checkbox" id="anonymous" name="anonymous">
+        <label for="anonymous">Я хочу отримати зворотній зв'язок</label>
+      </div>
+
+      <div id="feedback" class="d-none">
+        <label for="username">Введіть ваше ім'я</label>
+        <input type="text" id="username" name="name" autofocus="autofocus" placeholder="Повне ім'я"/>
+        <label for="phone">Введіть Ваш телефон</label>
+        <input type="text" id="phone" name="phone" placeholder="Телефон"/>
+      </div>
+
+      <label for="response">Відгук:</label>
+      <textarea id="response" name="response" placeholder="Місце для Вашого відгуку"
+                minlength="5" required></textarea>
+
+      <input id="submit" type="submit" class="btn btn-primary" value="Відправити"/>
+    </fieldset>
+  </form>
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+    <div class="toast-header">
+      <img src="/images/cropped-logo.png" class="rounded mr-2" alt="Cropped logo">
+      <strong class="mr-auto">Enter valid phone number.</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+</body>
+</html>
