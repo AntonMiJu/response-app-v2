@@ -81,8 +81,8 @@
 					<assembleDirectory>target</assembleDirectory>
 					<programs>
 						<program>
-							<mainClass>ResponseAppApplication</mainClass>
-							<name>responseApp</name>
+							<mainClass>ResponseAppV2Application</mainClass>
+							<name>responseAppV2</name>
 						</program>
 					</programs>
 				</configuration>
