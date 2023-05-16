@@ -18,6 +18,11 @@ fieldset {
   display: grid;
 }
 
+#icon {
+    width: -webkit-fill-available;
+    margin: 20px;
+}
+
 /* Input styles */
 
 input, textarea {
@@ -110,7 +115,7 @@ input[type=checkbox]:checked:after {
     padding: 30px 40px;
   }
 
-  form img {
+  form .icon {
     width: 150px;
   }
 
