@@ -27,7 +27,7 @@ public class TelegramResponseSender {
             directorRepository.findAll().forEach(director -> {
                 try {
                     telegramBot.execute(SendMessage.builder()
-                            .chatId(response.getGasStation().getChatId())
+                            .chatId(director.getChatId())
                             .parseMode("HTML")
                             .text(responseToDirectMessage(response))
                             .build());
@@ -44,7 +44,7 @@ public class TelegramResponseSender {
         StringBuilder builder = new StringBuilder();
         builder.append(!StringUtils.hasText(response.getName()) ? "" : (response.getName() + System.lineSeparator()));
         builder.append(!StringUtils.hasText(response.getPhone()) ? "" : (response.getPhone() + System.lineSeparator()));
-        builder.append(response);
+        builder.append(response.getResponse());
         return builder.toString();
     }
 

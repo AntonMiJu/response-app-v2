@@ -17,7 +17,7 @@
   <title>Залишити відгук</title>
 </head>
 <body class="anonymous">
-  <form id="form" th:action="@{response/}" th:object="${id}" method="post">
+  <form id="form" th:action="@{response(id=${id})}" th:object="${response}" method="post">
     <section>
       <img src="/img/logo.png" alt="Logo" id="icon">
     </section>
@@ -30,13 +30,13 @@
 
       <div id="feedback" class="d-none">
         <label for="username">Введіть ваше ім'я</label>
-        <input type="text" id="username" name="name" autofocus="autofocus" placeholder="Повне ім'я"/>
+        <input type="text" id="username" th:field="*{name}" name="name" autofocus="autofocus" placeholder="Повне ім'я"/>
         <label for="phone">Введіть Ваш телефон</label>
-        <input type="text" id="phone" name="phone" placeholder="Телефон"/>
+        <input type="text" id="phone" th:field="*{phone}" name="phone" placeholder="Телефон"/>
       </div>
 
       <label for="response">Відгук:</label>
-      <textarea id="response" name="response" placeholder="Місце для Вашого відгуку"
+      <textarea id="response" th:field="*{response}" name="response" placeholder="Місце для Вашого відгуку"
                 minlength="5" required></textarea>
 
       <input id="submit" type="submit" class="btn btn-primary" value="Відправити"/>
