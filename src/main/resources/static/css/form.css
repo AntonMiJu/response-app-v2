@@ -115,7 +115,7 @@ input[type=checkbox]:checked:after {
     padding: 30px 40px;
   }
 
-  form .icon {
+  form #icon {
     width: 150px;
   }
 
