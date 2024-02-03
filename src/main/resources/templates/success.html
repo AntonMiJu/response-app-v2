@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 
-  <link rel="icon" href="/img/favicon.png"/>
+  <link rel="icon" th:href="@{${'/img/' + brand + '/favicon.png'}}"/>
   <link rel="stylesheet" href="/css/result.css">
   <title>Відгук відправлено</title>
 </head>
 <body>
-  <img src="/img/logo.png" alt="Logo" id="icon">
+<img th:src="@{${'/img/' + brand + '/logo.png'}}" alt="Logo" id="icon">
   <h1>Дякуємо за відгук!</h1>
   <h3>Відгук відправлено в систему. Якщо Ви залишили контактні дані,
     то менеджер зателефонує вам для отримання детальнішої інформації.</h3>

@@ -5,5 +5,6 @@ CREATE TABLE public.director(
 CREATE TABLE public.gas_station(
     id text PRIMARY KEY,
     address text NOT NULL,
-    chat_id bigint NOT NULL
+    chat_id bigint NOT NULL,
+    brand text
 );

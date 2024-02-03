@@ -11,4 +11,5 @@ public class GasStation {
     private String id;
     private String address;
     private Long chatId;
+    private String brand;
 }

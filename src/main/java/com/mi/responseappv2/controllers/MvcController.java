@@ -25,9 +25,15 @@ public class MvcController {
         this.telegramResponseSender = telegramResponseSender;
     }
     @GetMapping("{id}/form")
-    public String getResponseForm(@PathVariable String id, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("response", new Response());
+    public String getResponseForm(HttpServletResponse servletResponse, @PathVariable String id, Model model) throws IOException {
+        Optional<GasStation> optionalGasStation = gasStationRepository.findById(id);
+        if (optionalGasStation.isPresent()) {
+            model.addAttribute("id", id);
+            model.addAttribute("brand", optionalGasStation.get().getBrand());
+            model.addAttribute("response", new Response());
+        } else {
+            servletResponse.sendRedirect("/error");
+        }
         return "form";
     }
 
@@ -36,18 +42,20 @@ public class MvcController {
             throws IOException {
         Optional<GasStation> optionalGasStation = gasStationRepository.findById(id);
         if (optionalGasStation.isPresent()) {
+            GasStation station = optionalGasStation.get();
             Response response = new Response(responseDto.getName(), responseDto.getPhone(), responseDto.getResponse());
-            response.setGasStation(optionalGasStation.get());
+            response.setGasStation(station);
             telegramResponseSender.sendResponse(response);
 
-            servletResponse.sendRedirect("/success");
+            servletResponse.sendRedirect("/" + station.getBrand() + "/success");
         } else {
             servletResponse.sendRedirect("/error");
         }
     }
 
-    @GetMapping("success")
-    public String getSuccess() {
+    @GetMapping("/{brand}/success")
+    public String getSuccess(@PathVariable String brand, Model model) {
+        model.addAttribute("brand", brand);
         return "success";
     }
 
